@@ -1,0 +1,89 @@
+package nano.udacity.ishan.popularmovies.data.provider.favmovie;
+
+import android.net.Uri;
+import android.provider.BaseColumns;
+
+import nano.udacity.ishan.popularmovies.data.provider.FavMovieProvider;
+import nano.udacity.ishan.popularmovies.data.provider.favmovie.FavmovieColumns;
+
+/**
+ * Movie info fetched by the discover/movie service
+ */
+public class FavmovieColumns implements BaseColumns {
+    public static final String TABLE_NAME = "favmovie";
+    public static final Uri CONTENT_URI = Uri.parse(FavMovieProvider.CONTENT_URI_BASE + "/" + TABLE_NAME);
+
+    /**
+     * Primary key.
+     */
+    public static final String _ID = BaseColumns._ID;
+
+    public static final String MOVIE_ID = "movie_id";
+
+    public static final String TITLE = "title";
+
+    public static final String ORIGINAL_TITLE = "original_title";
+
+    public static final String ORIGINAL_LANGUAGE = "original_language";
+
+    public static final String RELEASE_DATE = "release_date";
+
+    public static final String OVERVIEW = "overview";
+
+    public static final String BACKDROP_PATH = "backdrop_path";
+
+    public static final String POSTER_PATH = "poster_path";
+
+    public static final String POPULARITY = "popularity";
+
+    public static final String VOTE_COUNT = "vote_count";
+
+    public static final String VOTE_AVERAGE = "vote_average";
+
+    public static final String VIDEO = "video";
+
+    public static final String ADULT = "adult";
+
+
+    public static final String DEFAULT_ORDER = TABLE_NAME + "." +_ID;
+
+    // @formatter:off
+    public static final String[] ALL_COLUMNS = new String[] {
+            _ID,
+            MOVIE_ID,
+            TITLE,
+            ORIGINAL_TITLE,
+            ORIGINAL_LANGUAGE,
+            RELEASE_DATE,
+            OVERVIEW,
+            BACKDROP_PATH,
+            POSTER_PATH,
+            POPULARITY,
+            VOTE_COUNT,
+            VOTE_AVERAGE,
+            VIDEO,
+            ADULT
+    };
+    // @formatter:on
+
+    public static boolean hasColumns(String[] projection) {
+        if (projection == null) return true;
+        for (String c : projection) {
+            if (c.equals(MOVIE_ID) || c.contains("." + MOVIE_ID)) return true;
+            if (c.equals(TITLE) || c.contains("." + TITLE)) return true;
+            if (c.equals(ORIGINAL_TITLE) || c.contains("." + ORIGINAL_TITLE)) return true;
+            if (c.equals(ORIGINAL_LANGUAGE) || c.contains("." + ORIGINAL_LANGUAGE)) return true;
+            if (c.equals(RELEASE_DATE) || c.contains("." + RELEASE_DATE)) return true;
+            if (c.equals(OVERVIEW) || c.contains("." + OVERVIEW)) return true;
+            if (c.equals(BACKDROP_PATH) || c.contains("." + BACKDROP_PATH)) return true;
+            if (c.equals(POSTER_PATH) || c.contains("." + POSTER_PATH)) return true;
+            if (c.equals(POPULARITY) || c.contains("." + POPULARITY)) return true;
+            if (c.equals(VOTE_COUNT) || c.contains("." + VOTE_COUNT)) return true;
+            if (c.equals(VOTE_AVERAGE) || c.contains("." + VOTE_AVERAGE)) return true;
+            if (c.equals(VIDEO) || c.contains("." + VIDEO)) return true;
+            if (c.equals(ADULT) || c.contains("." + ADULT)) return true;
+        }
+        return false;
+    }
+
+}
